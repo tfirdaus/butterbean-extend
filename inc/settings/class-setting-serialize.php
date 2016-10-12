@@ -64,12 +64,12 @@ if ( ! class_exists( 'ButterBean_Setting_Serialize' ) ) {
 
 			$value = $this->get_serialized_value();
 
-			if ( ! isset( $value[ $this->name ] ) && ! butterbean()->is_new_post ) {
-				return '';
-			}
-
 			if ( isset( $value[ $this->name ] ) ) {
 				return $value[ $this->name ];
+			}
+
+			if ( ! isset( $value[ $this->name ] ) && ! butterbean()->is_new_post ) {
+				return $this->default;
 			}
 
 			if ( butterbean()->is_new_post ) {
@@ -88,7 +88,7 @@ if ( ! class_exists( 'ButterBean_Setting_Serialize' ) ) {
 
 			$value = get_post_meta( $this->manager->post_id, $this->manager->name, true );
 
-			return ! $value || butterbean()->is_new_post ? array() : $value;
+			return ! $value || butterbean()->is_new_post ? null : $value;
 		}
 	}
 
