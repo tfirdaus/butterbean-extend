@@ -6,7 +6,7 @@ A plugin that extends [ButterBean](https://github.com/justintadlock/butterbean),
 
 Load it along with the ButterBean main library, as follows:
 
-```
+```php
 add_action( 'plugins_loaded', 'load_butterbean' );
 
 function load_butterbean() {
